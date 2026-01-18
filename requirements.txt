@@ -2,6 +2,6 @@ streamlit
 pypdf
 tavily-python
 python-dotenv
-langchain>=0.1.16
+langchain>=0.1.100
 langchain-community>=0.1.1
 groq
