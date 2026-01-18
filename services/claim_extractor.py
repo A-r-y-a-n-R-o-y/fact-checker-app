@@ -2,21 +2,24 @@ import streamlit as st
 from langchain_core.prompts import PromptTemplate
 from langchain_groq import ChatGroq
 
+from groq import Groq
+
 def extract_claims(text):
-    # Access API key from Streamlit secrets
-    groq_api_key = st.secrets["GROQ_API_KEY"]
+    client = Groq(api_key=st.secrets["GROQ_API_KEY"])
     
-    # Initialize Groq LLM
-    llm = ChatGroq(
-        temperature=0,
-        groq_api_key=groq_api_key,
-        model_name="mixtral-8x7b-32768"  # or "llama2-70b-4096"
+    prompt = f"""Extract all specific factual claims from this text. 
+    Focus on: statistics, dates, financial figures, technical specifications.
+    
+    Text: {text}
+    
+    Return as a numbered list."""
+    
+    response = client.chat.completions.create(
+        messages=[{"role": "user", "content": prompt}],
+        model="mixtral-8x7b-32768",
+        temperature=0
     )
     
-    #claim extraction logic here
-    prompt = PromptTemplate(
-        input_variables=["text"],
-        template="Extract all factual claims from this text: {text}"
-    )
-    
+    return response.choices[0].message.content
+
 
