@@ -9,7 +9,7 @@ def extract_claims(text):
         # Initialize Groq LLM through LangChain
         llm = ChatGroq(
             api_key=st.secrets["GROQ_API_KEY"],
-            model="mixtral-8x7b-32768",
+            model="llama-3.3-70b-versatile",  # ← CHANGED THIS
             temperature=0
         )
         
