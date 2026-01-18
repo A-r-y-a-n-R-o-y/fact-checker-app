@@ -71,10 +71,10 @@ fact-checker-app/
 ├── requirements.txt # Python dependencies
 ├── README.md # Project documentation
 └── services/
-├── pdf_loader.py # PDF text extraction
-├── claim_extractor.py # LLM-based claim extraction
-├── web_search.py # Live web search logic
-└── verifier.py # Claim verification and classification
+    ├── pdf_loader.py # PDF text extraction
+    ├── claim_extractor.py # LLM-based claim extraction
+    ├── web_search.py # Live web search logic
+    └── verifier.py # Claim verification and classification
 
 
 ---
@@ -88,3 +88,4 @@ This app is designed to correctly flag:
 It prioritizes **accuracy, live data verification, and transparency**, aligning directly with the assessment criteria.
 
 ---
+
