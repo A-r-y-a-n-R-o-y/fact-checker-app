@@ -1,7 +1,5 @@
 streamlit
-   PyPDF2
-   langchain
-   langchain-groq
-   groq
-   tavily-python
-   requests
+PyPDF2
+groq
+tavily-python
+requests
