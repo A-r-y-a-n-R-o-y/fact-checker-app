@@ -1,5 +1,5 @@
 import streamlit as st
-from langchain.prompts import PromptTemplate
+from langchain_core.prompts import PromptTemplate
 from langchain_groq import ChatGroq
 
 def extract_claims(text):
@@ -19,3 +19,4 @@ def extract_claims(text):
         template="Extract all factual claims from this text: {text}"
     )
     
+
