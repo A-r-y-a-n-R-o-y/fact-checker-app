@@ -1,8 +1,10 @@
 streamlit
 pypdf
-openai
 tavily-python
-langchain
-langchain-community
-langchain-openai
 python-dotenv
+
+langchain==0.1.16
+langchain-core==0.1.45
+langchain-community==0.0.33
+
+groq
