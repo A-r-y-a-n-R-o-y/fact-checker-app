@@ -1,12 +1,14 @@
+import streamlit as st
 from tavily import TavilyClient
-import os
 
-client = TavilyClient(api_key=os.getenv("TAVILY_API_KEY"))
-
-def search_web(query):
-    response = client.search(
-        query=query,
-        search_depth="advanced",
-        max_results=5
-    )
-    return response["results"]
+def search_claim(claim):
+    # Access Tavily API key from secrets
+    tavily_api_key = st.secrets["TAVILY_API_KEY"]
+    
+    # Initialize Tavily client
+    client = TavilyClient(api_key=tavily_api_key)
+    
+    # Search for the claim
+    response = client.search(claim, max_results=3)
+    
+    return response
