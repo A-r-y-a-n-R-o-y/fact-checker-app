@@ -5,7 +5,7 @@ from services.verifier import verify_claims
 
 st.set_page_config(page_title="Fact Checker", layout="wide")
 
-st.title("📄 AI Fact-Checking Web App")
+st.title("AI Fact-Checking Web App")
 st.write("Upload a PDF. The app will extract factual claims and verify them against live web data.")
 
 uploaded_file = st.file_uploader("Upload PDF", type=["pdf"])
@@ -31,12 +31,13 @@ if uploaded_file:
 
             status = r["status"]
             if status == "Verified":
-                st.success(f"✅ {status}")
+                st.success(f"{status}")
             elif status == "Inaccurate":
-                st.warning(f"⚠️ {status}")
+                st.warning(f"{status}")
             else:
-                st.error(f"❌ {status}")
+                st.error(f"{status}")
 
             st.write("**Evidence:**")
             st.write(r["evidence"])
             st.divider()
+
