@@ -1,33 +1,21 @@
-import os
+import streamlit as st
 from langchain.prompts import PromptTemplate
-from langchain_community.chat_models import ChatGroq
+from langchain_groq import ChatGroq
 
-def extract_claims(text: str):
-    # Initialize the model
+def extract_claims(text):
+    # Access API key from Streamlit secrets
+    groq_api_key = st.secrets["GROQ_API_KEY"]
+    
+    # Initialize Groq LLM
     llm = ChatGroq(
-        groq_api_key=os.getenv("GROQ_API_KEY"),
-        model_name="llama3-8b-8192",
-        temperature=0
+        temperature=0,
+        groq_api_key=groq_api_key,
+        model_name="mixtral-8x7b-32768"  # or "llama2-70b-4096"
     )
-
-    # Define the prompt
+    
+    #claim extraction logic here
     prompt = PromptTemplate(
         input_variables=["text"],
-        template="""
-Extract factual, checkable claims from the following text.
-Only return bullet points containing statistics, dates, financial figures,
-or concrete verifiable assertions.
-
-Text:
-{text}
-"""
+        template="Extract all factual claims from this text: {text}"
     )
-
-    # Generate response
-    response = llm(prompt.format(text=text))  # Use __call__ instead of invoke
-
-    # Extract claims
-    claims = response.content.split("\n")  # Check response structure if needed
-    claims = [c.strip("- ").strip() for c in claims if c.strip()]
-
-    return claims
+    
