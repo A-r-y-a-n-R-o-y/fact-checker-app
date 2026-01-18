@@ -1,41 +1,50 @@
 import streamlit as st
-from groq import Groq
+from langchain_groq import ChatGroq
+from langchain_core.prompts import PromptTemplate
+from langchain_core.output_parsers import StrOutputParser
 
 def extract_claims(text):
-    """Extract factual claims from text using Groq"""
+    """Extract factual claims using LangChain + Groq"""
     try:
-        client = Groq(api_key=st.secrets["GROQ_API_KEY"])
+        # Initialize Groq LLM through LangChain
+        llm = ChatGroq(
+            api_key=st.secrets["GROQ_API_KEY"],
+            model="mixtral-8x7b-32768",
+            temperature=0
+        )
         
-        prompt = f"""You are a fact-checking assistant. Extract ALL specific factual claims from the following text.
-        
-Focus on:
-- Statistics and numbers
-- Dates and timeframes
-- Financial figures (prices, revenue, market cap, etc.)
-- Technical specifications
-- Quotes attributed to people
-- Historical events
+        # Create prompt template
+        prompt = PromptTemplate(
+            input_variables=["text"],
+            template="""You are a fact-checking assistant. Extract ALL specific factual claims from the following text.
 
-Format each claim as a separate line starting with "CLAIM: "
+Focus on:
+- Statistics and numbers (e.g., "GDP grew by 5%", "Stock price is $150")
+- Dates and timeframes (e.g., "In 2023...", "Last quarter...")
+- Financial figures (revenue, market cap, prices, etc.)
+- Technical specifications (speeds, sizes, capacities)
+- Quotes attributed to specific people
+- Historical events and facts
+
+Format: Return each claim on a new line starting with "CLAIM: "
 
 Text to analyze:
 {text}
 
-Extract the claims:"""
-        
-        response = client.chat.completions.create(
-            messages=[{"role": "user", "content": prompt}],
-            model="mixtral-8x7b-32768",
-            temperature=0,
-            max_tokens=2000
+Extract all verifiable claims:"""
         )
         
-        claims_text = response.choices[0].message.content
+        # Create chain
+        chain = prompt | llm | StrOutputParser()
+        
+        # Run the chain
+        result = chain.invoke({"text": text})
         
         # Parse claims into a list
         claims = []
-        for line in claims_text.split('\n'):
-            if line.strip().startswith('CLAIM:'):
+        for line in result.split('\n'):
+            line = line.strip()
+            if line.startswith('CLAIM:'):
                 claim = line.replace('CLAIM:', '').strip()
                 if claim:
                     claims.append(claim)
