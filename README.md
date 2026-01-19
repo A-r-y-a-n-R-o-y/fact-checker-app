@@ -1,4 +1,4 @@
-# Fact-Checking Web App (Link-https://fact-checker-app-ewdwddu7ddqx4vqbpb6xpk.streamlit.app/)
+# Fact-Checking Web App (App Link-https://fact-checker-app-ewdwddu7ddqx4vqbpb6xpk.streamlit.app/)
 
 ## Overview
 This project is a deployed web application that automates factual claim verification from PDF documents.  
@@ -88,5 +88,6 @@ This app is designed to correctly flag:
 It prioritizes **accuracy, live data verification, and transparency**, aligning directly with the assessment criteria.
 
 ---
+
 
 
