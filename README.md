@@ -59,7 +59,7 @@ Supporting evidence is displayed alongside each claim for transparency.
 
 ## Deployment
 - The app is deployed on **Streamlit Cloud**
-- Environment variables (`OPENAI_API_KEY`, `TAVILY_API_KEY`) are securely configured in Streamlit Cloud settings
+- Environment variables (`GORQ_API_KEY`, `TAVILY_API_KEY`) are securely configured in Streamlit Cloud settings
 - No API keys are stored in the repository
 
 ---
@@ -88,6 +88,7 @@ This app is designed to correctly flag:
 It prioritizes **accuracy, live data verification, and transparency**, aligning directly with the assessment criteria.
 
 ---
+
 
 
 
