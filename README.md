@@ -18,7 +18,7 @@ The system operates in three main stages:
 - The extracted text is passed downstream for analysis.
 
 ### 2. Claim Extraction (LLM-powered)
-- The extracted text is sent to an Gorq via LangChain.
+- The extracted text is sent to Gorq via LangChain.
 - A structured prompt instructs the model to extract **only checkable factual claims**, such as:
   - Numerical statistics
   - Dates and timelines
@@ -88,6 +88,7 @@ This app is designed to correctly flag:
 It prioritizes **accuracy, live data verification, and transparency**, aligning directly with the assessment criteria.
 
 ---
+
 
 
 
