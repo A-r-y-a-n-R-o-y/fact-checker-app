@@ -51,7 +51,7 @@ Supporting evidence is displayed alongside each claim for transparency.
 - **Frontend / App Framework:** Streamlit  
 - **Backend / Logic:** Python  
 - **LLM Orchestration:** LangChain  
-- **Language Model:** OpenAI GPT-4o  
+- **Language Model:** Gorq 
 - **Web Search:** Tavily API  
 - **PDF Parsing:** pypdf  
 
@@ -88,6 +88,7 @@ This app is designed to correctly flag:
 It prioritizes **accuracy, live data verification, and transparency**, aligning directly with the assessment criteria.
 
 ---
+
 
 
 
