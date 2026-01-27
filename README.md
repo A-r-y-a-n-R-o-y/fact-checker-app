@@ -18,7 +18,7 @@ The system operates in three main stages:
 - The extracted text is passed downstream for analysis.
 
 ### 2. Claim Extraction (LLM-powered)
-- The extracted text is sent to Gorq via LangChain.
+- The extracted text is sent to Groq via LangChain.
 - A structured prompt instructs the model to extract **only checkable factual claims**, such as:
   - Numerical statistics
   - Dates and timelines
@@ -51,7 +51,7 @@ Supporting evidence is displayed alongside each claim for transparency.
 - **Frontend / App Framework:** Streamlit  
 - **Backend / Logic:** Python  
 - **LLM Orchestration:** LangChain  
-- **Language Model:** Gorq 
+- **Language Model:** Groq
 - **Web Search:** Tavily API  
 - **PDF Parsing:** pypdf  
 
@@ -59,7 +59,7 @@ Supporting evidence is displayed alongside each claim for transparency.
 
 ## Deployment
 - The app is deployed on **Streamlit Cloud**
-- Environment variables (`GORQ_API_KEY`, `TAVILY_API_KEY`) are securely configured in Streamlit Cloud settings
+- Environment variables (`Groq_API_KEY`, `TAVILY_API_KEY`) are securely configured in Streamlit Cloud settings
 - No API keys are stored in the repository
 
 ---
@@ -88,6 +88,7 @@ This app is designed to correctly flag:
 It prioritizes **accuracy, live data verification, and transparency**, aligning directly with the assessment criteria.
 
 ---
+
 
 
 
